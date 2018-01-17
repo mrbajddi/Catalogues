@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html ng-app='MyApp'>
+<html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="monStyle.css"> 
+<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" /> 
 <title>Catalogue</title>
 </head>
 <body>
-<div ng-controller='MyController'>
- Produits :
-{{pageProduits}}
+<div ng-app='MyApp' ng-controller='MyController'>
+
+<table class="table table-striped table-bordered" >
+<thead>
+<tr>
+<th>Designation</th> <th>Prix</th> <th>Quantité</th>
+</tr>
+</thead>
+<tr ng-repeat="p in pageProduits.produits">
+<td>{{p.designation}}</td> <td>{{p.prix}}</td> <td>{{p.quantite}}</td>
+</tr>
+
+</table>
  
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-<script src="./monAngular.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="monAngular.js"></script>
 </body>
 </html>
