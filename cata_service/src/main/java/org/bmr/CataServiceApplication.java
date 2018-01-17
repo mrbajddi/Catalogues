@@ -31,7 +31,6 @@ public class CataServiceApplication implements CommandLineRunner{
 	    
 	    List<Produit>  products =  produitRepository.findAll();
 	    products.forEach(p->System.out.println("designation : " + p.getDesignation() + " / "+ p.getPrix()));
-	    
-	    // added comment for GIT test
+
 	}
 }
