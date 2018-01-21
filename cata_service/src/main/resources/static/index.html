@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" /> 
-<title>Catalogue</title>
+<link rel="stylesheet" type="text/css" href="monStyle.css" /> 
+<title>Catalogue des produits</title>
 </head>
-<body>
-<div ng-app='MyApp' ng-controller='MyController'>
+<body ng-app='MyApp' ng-controller='MyController'>
 
-<table class="table table-striped table-bordered" >
+<br>
+<div class="container spacer">
+Designation : <input type="text" ng-model="designation" >
+<button ng-click="chercherProduits()"> Chercher </button> 
+</div>
+<br>
+<div class="container">
+<table class="table table-striped" >
 <thead>
 <tr>
-<th>Designation</th> <th>Prix</th> <th>Quantité</th>
+<th>Designation</th>
+<th>Prix</th>
+<th>QuantitÃ©</th>
 </tr>
 </thead>
+<tbody>
 <tr ng-repeat="p in pageProduits.produits">
-<td>{{p.designation}}</td> <td>{{p.prix}}</td> <td>{{p.quantite}}</td>
+<td>{{p.designation}}</td>
+<td>{{p.prix}}</td>
+<td>{{p.quantite}}</td>
 </tr>
-
+</tbody>
 </table>
- 
 </div>
 
+<div class="container">
+<ul class="nav nav-pills">
+<li ng-class="{active:$index==pageCourante}" ng-repeat="p in pages track by $index">
+<a ng-click="gotoPage($index)" class="clickable">{{$index}}</a>
+</li>
+</ul>
+</div>
+
+</body>
 <script src="node_modules/angular/angular.min.js"></script>
 <script src="monAngular.js"></script>
-</body>
 </html>

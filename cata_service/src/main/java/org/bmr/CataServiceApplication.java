@@ -1,13 +1,13 @@
 package org.bmr;
 
-import java.util.List;
-
 import org.bmr.dao.ProduitRepository;
 import org.bmr.entities.Produit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 @SpringBootApplication
 public class CataServiceApplication implements CommandLineRunner{
@@ -27,9 +27,10 @@ public class CataServiceApplication implements CommandLineRunner{
 	    produitRepository.save(new Produit("KK 087", 98, 54));
 	    produitRepository.save(new Produit("UH 934", 7, 4));
 	    produitRepository.save(new Produit("KO 932", 40, 9));
+	    produitRepository.save(new Produit("DESI00", 40, 9));
 	    produitRepository.flush();
 	    
-	    List<Produit>  products =  produitRepository.findAll();
+	    Page<Produit>  products =  produitRepository.findByDesignation("%HX%", new PageRequest(0, 5));
 	    products.forEach(p->System.out.println("designation : " + p.getDesignation() + " / "+ p.getPrix()));
 
 	}
